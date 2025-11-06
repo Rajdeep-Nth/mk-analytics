@@ -15,6 +15,7 @@ const projectData = {
       name: "Preliminary Research",
       icon: "search",
       color: "#3B82F6",
+      description: "This phase involves gathering qualitative data and identifying research gaps to form a solid foundation for the quantitative survey.",
       steps: [
         {
           id: "1.1",
@@ -79,6 +80,7 @@ const projectData = {
       name: "Survey & Data Collection",
       icon: "clipboard-list",
       color: "#8B5CF6",
+      description: "This phase focuses on developing and distributing the survey to collect the necessary data for analysis.",
       steps: [
         {
           id: "2.1",
@@ -129,6 +131,7 @@ const projectData = {
       name: "Advanced Analytics",
       icon: "chart-line",
       color: "#EC4899",
+      description: "In this phase, we will use advanced statistical techniques to analyze the collected data and uncover meaningful insights.",
       steps: [
         {
           id: "3.1",
@@ -179,6 +182,7 @@ const projectData = {
       name: "Insights & Reporting",
       icon: "lightbulb",
       color: "#10B981",
+      description: "The final phase involves visualizing the findings, generating actionable insights, and developing strategic recommendations.",
       steps: [
         {
           id: "4.1",
