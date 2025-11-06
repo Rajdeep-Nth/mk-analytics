@@ -442,6 +442,7 @@ function setupNavigationHighlight() {
 
 // Render phases timeline
 function renderPhasesTimeline() {
+  console.log(projectData.phases);
   const container = document.getElementById('phasesTimeline');
   if (!container) return;
   
