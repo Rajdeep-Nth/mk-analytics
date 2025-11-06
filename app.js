@@ -449,7 +449,7 @@ function renderPhasesTimeline() {
       <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow cursor-pointer" onclick="togglePhaseSteps(${idx})">
         <div class="flex justify-between items-start mb-2">
           <h3 class="text-xl font-bold text-gray-900 dark:text-white">Phase ${phase.number}: ${phase.name}</h3>
-          <span class="text-sm text-gray-500 dark:text-gray-400">${phase.steps_count} steps</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400">${phase.steps.length} steps</span>
         </div>
         <p class="text-gray-600 dark:text-gray-400 mb-3">${phase.description}</p>
         <div id="phase-steps-${idx}" class="hidden mt-4 space-y-4 border-t border-gray-200 dark:border-gray-700 pt-4">
