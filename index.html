@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Usage Research - Marketing Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand -->
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-chart-line text-2xl text-teal-600 dark:text-teal-400"></i>
+                    <span class="text-lg font-semibold text-gray-900 dark:text-white hidden sm:block">Marketing Analytics Pro</span>
+                </div>
+                
+                <!-- Center Menu -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#overview" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">OVERVIEW</a>
+                    <a href="#phases" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">PHASES</a>
+                    <a href="#analysis" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">ANALYSIS</a>
+                    <a href="#insights" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">INSIGHTS</a>
+                    <a href="#contact" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">CONTACT</a>
+                </div>
+                
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="sharePage()" class="hidden sm:flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium transition-colors">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share</span>
+                    </button>
+                    <button onclick="window.print()" class="hidden sm:flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium transition-colors">
+                        <i class="fas fa-print"></i>
+                        <span>Print</span>
+                    </button>
+                    <button onclick="downloadReport()" class="hidden sm:flex items-center space-x-2 px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg text-sm font-medium transition-colors">
+                        <i class="fas fa-download"></i>
+                        <span>Download Report</span>
+                    </button>
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" title="Toggle Dark Mode">
+                        <i class="fas fa-moon dark-mode-icon" id="darkModeIcon"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#overview" class="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">OVERVIEW</a>
+                <a href="#phases" class="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">PHASES</a>
+                <a href="#analysis" class="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">ANALYSIS</a>
+                <a href="#insights" class="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">INSIGHTS</a>
+                <a href="#survey" class="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">SURVEY</a>
+                <button onclick="sharePage()" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Share</span>
+                </button>
+                <button onclick="window.print()" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium">
+                    <i class="fas fa-print"></i>
+                    <span>Print</span>
+                </button>
+                <button onclick="downloadReport()" class="flex items-center space-x-2 px-4 py-2 bg-teal-600 text-white rounded-lg text-sm font-medium">
+                    <i class="fas fa-download"></i>
+                    <span>Download Report</span>
+                <a href="#contact" class="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="pt-16">
+        <!-- Main Content -->
+        <main class="w-full">
+            <!-- Hero Section -->
+            <section id="hero" class="relative bg-gradient-to-br from-teal-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">AI Tools Usage Research: Marketing Analytics Project</h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">Understanding AI Adoption Patterns at BITS Pilani</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                            <div class="text-4xl font-bold text-blue-600 mb-2">4</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Phases</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                            <div class="text-4xl font-bold text-purple-600 mb-2">13</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Steps</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                            <div class="text-4xl font-bold text-pink-600 mb-2">3</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Advanced Analyses</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                            <div class="text-4xl font-bold text-green-600 mb-2">82%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Accuracy</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <i class="fas fa-chevron-down text-3xl text-gray-400 animate-bounce"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Carousel Section -->
+            <section id="carousel" class="py-16 bg-white dark:bg-gray-900">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Key Analysis Visualizations</h2>
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+                                    <div class="mb-4">
+                                        <canvas id="perceptualMapChart" style="height: 400px;"></canvas>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Perceptual Map: AI Tool Positioning</h3>
+                                    <p class="text-gray-600 dark:text-gray-400">Students perceive ChatGPT as most accessible, positioned in the ideal zone for ease of use and feature power.</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+                                    <div class="mb-4">
+                                        <canvas id="segmentationChart" style="height: 400px;"></canvas>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Student Segmentation Profiles</h3>
+                                    <p class="text-gray-600 dark:text-gray-400">Four distinct segments identified: Power Users (25%), Pragmatic Adopters (45%), Cautious Users (20%), and Non-Adopters (10%).</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+                                    <div class="mb-4">
+                                        <canvas id="predictorsChart" style="height: 400px;"></canvas>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Key Predictors of Adoption</h3>
+                                    <p class="text-gray-600 dark:text-gray-400">Technical comfort (β=0.85) emerges as the strongest predictor of AI adoption, followed by academic discipline (β=0.72).</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Overview Section -->
+            <section id="overview" class="py-16 bg-gray-50 dark:bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Project Overview</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow">
+                            <div class="flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-lg mb-4">
+                                <i class="fas fa-layer-group text-3xl text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2">4</div>
+                            <div class="text-gray-600 dark:text-gray-400">Total Phases</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow">
+                            <div class="flex items-center justify-center w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-lg mb-4">
+                                <i class="fas fa-list-check text-3xl text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2">13</div>
+                            <div class="text-gray-600 dark:text-gray-400">Total Steps</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow">
+                            <div class="flex items-center justify-center w-16 h-16 bg-pink-100 dark:bg-pink-900 rounded-lg mb-4">
+                                <i class="fas fa-users text-3xl text-pink-600 dark:text-pink-400"></i>
+                            </div>
+                            <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2">4</div>
+                            <div class="text-gray-600 dark:text-gray-400">Student Segments</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow">
+                            <div class="flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-900 rounded-lg mb-4">
+                                <i class="fas fa-check-circle text-3xl text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2">82%</div>
+                            <div class="text-gray-600 dark:text-gray-400">Classification Accuracy</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phases Section -->
+            <section id="phases" class="py-16 bg-white dark:bg-gray-900">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">Research Phases</h2>
+                    <div class="mb-8 max-w-lg mx-auto">
+                        <input type="text" id="phaseSearch" placeholder="Search phases..." class="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                    </div>
+                    <div class="relative">
+                        <div class="absolute left-8 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-700"></div>
+                        <div class="space-y-8" id="phasesTimeline"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analysis Section -->
+            <section id="analysis" class="py-16 bg-gray-50 dark:bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="hero-content">
+                        <h1 class="hero-title">AI Tools Usage Research</h1>
+                        <h2 class="hero-subtitle">Marketing Analytics with Clustering, Discriminant Analysis &amp; Perceptual Mapping</h2>
+                        <p class="hero-description">
+                            A comprehensive guide to conducting marketing research at BITS Pilani, 
+                            exploring how students adopt and use AI tools in their academic journey.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">13</div>
+                                <div class="stat-label">Detailed Steps</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Core Analyses</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">4</div>
+                                <div class="stat-label">Major Phases</div>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary btn--lg" onclick="navigateTo('phases')">
+                            Begin Exploration <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Timeline Overview -->
+                <div class="timeline-overview">
+                    <h3>Research Journey Timeline</h3>
+                    <div class="timeline-phases">
+                        <div class="timeline-phase" style="background: var(--color-bg-1);">
+                            <div class="timeline-icon" style="background: #3B82F6;">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h4>Phase 1</h4>
+                            <p>Preliminary Research</p>
+                            <span class="timeline-steps">4 steps</span>
+                        </div>
+                        <div class="timeline-phase" style="background: var(--color-bg-5);">
+                            <div class="timeline-icon" style="background: #8B5CF6;">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <h4>Phase 2</h4>
+                            <p>Survey &amp; Data Collection</p>
+                            <span class="timeline-steps">3 steps</span>
+                        </div>
+                        <div class="timeline-phase" style="background: var(--color-bg-7);">
+                            <div class="timeline-icon" style="background: #EC4899;">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>Phase 3</h4>
+                            <p>Advanced Analytics</p>
+                            <span class="timeline-steps">3 steps</span>
+                        </div>
+                        <div class="timeline-phase" style="background: var(--color-bg-3);">
+                            <div class="timeline-icon" style="background: #10B981;">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Phase 4</h4>
+                            <p>Insights &amp; Reporting</p>
+                            <span class="timeline-steps">3 steps</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Features -->
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h4>Student Segmentation</h4>
+                        <p>Discover distinct user groups through clustering analysis</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-scatter feature-icon"></i>
+                        <h4>Perceptual Mapping</h4>
+                        <p>Visualize how students perceive different AI tools</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-project-diagram feature-icon"></i>
+                        <h4>Discriminant Analysis</h4>
+                        <p>Identify key factors that differentiate user segments</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-pie feature-icon"></i>
+                        <h4>Interactive Dashboard</h4>
+                        <p>Explore comprehensive data visualizations</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phases Section -->
+            <section id="phases" class="content-section">
+                <div class="breadcrumb">
+                    <a href="#home" onclick="navigateTo('home')">Home</a> / <span>Phases</span>
+                </div>
+                <h2>Project Phases &amp; Steps</h2>
+                <div id="phasesContent"></div>
+            </section>
+
+            <!-- Analyses Section -->
+            <section id="analyses" class="content-section">
+                <div class="breadcrumb">
+                    <a href="#home" onclick="navigateTo('home')">Home</a> / <span>Analysis Techniques</span>
+                </div>
+                <h2>Advanced Analysis Techniques</h2>
+                
+                <!-- Analysis Tabs -->
+                <div class="analysis-tabs">
+                    <button class="tab-btn active" onclick="showAnalysis('clustering')">
+                        <i class="fas fa-project-diagram"></i> Clustering
+                    </button>
+                    <button class="tab-btn" onclick="showAnalysis('discriminant')">
+                        <i class="fas fa-divide"></i> Discriminant Analysis
+                    </button>
+                    <button class="tab-btn" onclick="showAnalysis('perceptual')">
+                        <i class="fas fa-map-marked-alt"></i> Perceptual Mapping
+                    </button>
+                </div>
+
+                <!-- Clustering Analysis -->
+                <div id="clustering" class="analysis-content active">
+
+
+                </main>
+
+
+            </div>
+
+
+        
+
+
+            <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800">
+
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+                    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Contact Us</h2>
+
+
+                    <form class="max-w-lg mx-auto">
+
+
+                        <div class="mb-4">
+
+
+                            <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
+
+
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+
+                            <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
+
+
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+
+                            <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
+
+
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:text-white"></textarea>
+
+
+                        </div>
+
+
+                        <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white rounded-lg px-4 py-2 font-medium">Submit</button>
+
+
+                    </form>
+
+
+                </div>
+
+
+            </section>
+
+
+        
+
+
+            <script src="app.js"></script>
+
+    <button id="scrollToTopBtn" class="fixed bottom-8 right-8 bg-teal-600 hover:bg-teal-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>
